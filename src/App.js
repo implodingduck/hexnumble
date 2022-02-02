@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -44,12 +43,12 @@ function App() {
   }
 
   const handleCheck = (e) => {
-    let result = guesses.a == answers[0]
-    result = result && (guesses.b == answers[1])
-    result = result && (guesses.c == answers[2])
-    result = result && (guesses.x == answers[3])
-    result = result && (guesses.y == answers[4])
-    result = result && (guesses.z == answers[5])
+    let result = guesses.a === answers[0]
+    result = result && (guesses.b === answers[1])
+    result = result && (guesses.c === answers[2])
+    result = result && (guesses.x === answers[3])
+    result = result && (guesses.y === answers[4])
+    result = result && (guesses.z === answers[5])
     setResultVal(result)
     handleShow()
   }
