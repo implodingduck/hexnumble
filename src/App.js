@@ -82,7 +82,12 @@ function App() {
         </Row>
         <Row>
           <Col xs={{ offset: 1, span: 1}}><input type="text" className="guess" data-index="c" value={guesses.c} onChange={handleSetGuesses} /></Col>
-          <Col xs={{ offset: 0, span: 8}}><div className="hexagon">{ a + b + c + x + y + z }</div></Col>
+          <Col xs={{ offset: 0, span: 8}}>
+          { a + b + c + x + y + z }
+          {/* <svg version="1.1" xmlns="http://www.w3.org/2000/svg" style={{ filter: "drop-shadow(rgba(255, 255, 255, 0.5) 0px 0px 10px)" }} width="200" height="174" viewbox="0 0 200 173.20508075688772"><path fill="#ff00ff" d="M0 86.60254037844386L50 0L150 0L200 86.60254037844386L150 173.20508075688772L50 173.20508075688772Z"></path></svg> */}
+            
+            
+          </Col>
           <Col xs={{ offset: 0, span: 1}}><input type="text" className="guess" data-index="x" value={guesses.x} onChange={handleSetGuesses}  /></Col>
         </Row>
         <Row>
