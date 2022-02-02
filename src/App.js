@@ -28,6 +28,7 @@ function App() {
   })
 
   const [show, setShow] = React.useState(false);
+  const [resultVal, setResultVal] = React.useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -49,7 +50,12 @@ function App() {
     result = result && (guesses.x == answers[3])
     result = result && (guesses.y == answers[4])
     result = result && (guesses.z == answers[5])
+    setResultVal(result)
     handleShow()
+  }
+
+  const handlePlayAgain = (e) => {
+    window.location.reload();
   }
 
   const a = answers[0];
@@ -95,16 +101,16 @@ function App() {
       </Container>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal title</Modal.Title>
+          <Modal.Title></Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          <p>Modal body text goes here.</p>
+          { (resultVal) ? <p>You are Correct!!!</p> : <p>You are Incorrect...</p> }
         </Modal.Body>
 
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
-          <Button variant="primary">Play Again!</Button>
+          { (resultVal) ? <Button variant="primary" onClick={handlePlayAgain}>Play Again!</Button> : "" }
         </Modal.Footer>
       </Modal>
     </div>
