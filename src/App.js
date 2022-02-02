@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 
 function App() {
 
@@ -27,6 +27,10 @@ function App() {
     "z": "",
   })
 
+  const [show, setShow] = React.useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleSetGuesses = (e) => {
     console.log(e)
@@ -45,7 +49,7 @@ function App() {
     result = result && (guesses.x == answers[3])
     result = result && (guesses.y == answers[4])
     result = result && (guesses.z == answers[5])
-    alert(result)
+    handleShow()
   }
 
   const a = answers[0];
@@ -56,49 +60,53 @@ function App() {
   const z = answers[5];
 
   return (
-    
-
     <div className="App">
+      
       <Container>
         <Row>
-          <Col></Col>
-          <Col><input type="text" className="guess" data-index="a" value={guesses.a} onChange={handleSetGuesses} /></Col>
-          <Col>{ a * b }</Col>
-          <Col><input type="text" className="guess" data-index="b" value={guesses.b} onChange={handleSetGuesses}  /></Col>
-          <Col></Col>
+          <Col><h1>Hexnumble</h1></Col>
         </Row>
         <Row>
-          <Col>{ c * a}</Col>
-          <Col></Col>
-          <Col></Col>
-          <Col></Col>
-          <Col>{ b * x}</Col>
+          <Col xs={{ offset: 3, span: 1}}><input type="text" className="guess" data-index="a" value={guesses.a} onChange={handleSetGuesses} /></Col>
+          <Col xs={{ offset: 0, span: 4}}>{ a * b }</Col>
+          <Col xs={{ offset: 0, span: 1}}><input type="text" className="guess" data-index="b" value={guesses.b} onChange={handleSetGuesses}  /></Col>
         </Row>
         <Row>
-          <Col><input type="text" className="guess" data-index="c" value={guesses.c} onChange={handleSetGuesses} /></Col>
-          <Col></Col>
-          <Col> { a + b + c + x + y + z } </Col>
-          <Col></Col>
-          <Col><input type="text" className="guess" data-index="x" value={guesses.x} onChange={handleSetGuesses}  /></Col>
+          <Col xs={{ offset: 2, span: 1}}>{ c * a}</Col>
+          <Col xs={{ offset: 6, span: 1}}>{ b * x}</Col>
         </Row>
         <Row>
-          <Col>{y * c}</Col>
-          <Col></Col>
-          <Col></Col>
-          <Col></Col>
-          <Col>{ x * z }</Col>
+          <Col xs={{ offset: 1, span: 1}}><input type="text" className="guess" data-index="c" value={guesses.c} onChange={handleSetGuesses} /></Col>
+          <Col xs={{ offset: 0, span: 8}}><div className="hexagon">{ a + b + c + x + y + z }</div></Col>
+          <Col xs={{ offset: 0, span: 1}}><input type="text" className="guess" data-index="x" value={guesses.x} onChange={handleSetGuesses}  /></Col>
         </Row>
         <Row>
-          <Col></Col>
-          <Col><input type="text" className="guess" data-index="y" value={guesses.y} onChange={handleSetGuesses}  /></Col>
-          <Col>{ y * z } </Col>
-          <Col><input type="text" className="guess" data-index="z" value={guesses.z} onChange={handleSetGuesses}  /></Col>
-          <Col></Col>
+          <Col xs={{ offset: 2, span: 1}}>{y * c}</Col>
+          <Col xs={{ offset: 6, span: 1}}>{ x * z }</Col>
+        </Row>
+        <Row>
+          <Col xs={{ offset: 3, span: 1}}><input type="text" className="guess" data-index="y" value={guesses.y} onChange={handleSetGuesses}  /></Col>
+          <Col xs={{ offset: 1, span: 2}}>{ y * z }</Col>
+          <Col xs={{ offset: 1, span: 1}}><input type="text" className="guess" data-index="z" value={guesses.z} onChange={handleSetGuesses}  /></Col>
         </Row>
         <Row>
           <Col><Button onClick={handleCheck}>Check!</Button></Col>
         </Row>
       </Container>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>Modal body text goes here.</p>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
+          <Button variant="primary">Play Again!</Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
