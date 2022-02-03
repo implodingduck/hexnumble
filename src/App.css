@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  
+  z-index: 10;
 }
 
 .guess {
@@ -9,9 +9,7 @@
 /* div[class*="col"] {
   border: 1px solid #ff00ff;
 } */
-.container {
-  max-width: 1024px;
-}
+
 .row {
   height: 3em;
 }
