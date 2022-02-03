@@ -5,7 +5,8 @@
 }
 
 .guess {
-  width: 3em;
+  width: 100%;
+  max-width: 3em;
 }
 /* div[class*="col"] {
   border: 1px solid #ff00ff;
@@ -21,6 +22,9 @@ html body {
 }
 div.modal-content p {
   color: #333333;
+}
+.container {
+  margin-top: 2em;
 }
 /* .container {
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjIwJSI+CiAgPHBhdGggZmlsbD0icmdiKDI1NSwgMCwgMjU1KSIgIGQ9Ik0yNSw3IEw3NSw3IDkzLDUwIDc1LDkzIDI1LDkzIDcsNTB6IiAvPgo8L3N2Zz4=");
