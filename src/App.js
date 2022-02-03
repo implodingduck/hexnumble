@@ -58,16 +58,16 @@ function App() {
     window.location.reload();
   }
 
-  // const hexValue = () => {
-  //   let hex = '#'
-  //   hex += (answers[0]-1).toString(16)
-  //   hex += (answers[1]-1).toString(16)
-  //   hex += (answers[2]-1).toString(16)
-  //   hex += (answers[3]-1).toString(16)
-  //   hex += (answers[4]-1).toString(16)
-  //   hex += (answers[5]-1).toString(16)
-  //   return hex;
-  // }
+  /* const hexValue = () => {
+     let hex = '#'
+     hex += (answers[0]-1).toString(16)
+     hex += (answers[1]-1).toString(16)
+     hex += (answers[2]-1).toString(16)
+     hex += (answers[3]-1).toString(16)
+     hex += (answers[4]-1).toString(16)
+     hex += (answers[5]-1).toString(16)
+     return hex;
+  */ }
 
   const a = answers[0];
   const b = answers[1];
