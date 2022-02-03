@@ -1,6 +1,7 @@
 .App {
   text-align: center;
-  z-index: 10;
+  background-color: #515151;
+  color: #fcfcfc;
 }
 
 .guess {
@@ -14,7 +15,16 @@
   height: 3em;
 }
 
-.container {
-  background-image: url("https://implodingduck.github.io/hexnumble/hexagon.svg");
-  background-position: center;
+html body {
+  background-color: #515151;
+  color: #fcfcfc;
 }
+div.modal-content p {
+  color: #333333;
+}
+/* .container {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjIwJSI+CiAgPHBhdGggZmlsbD0icmdiKDI1NSwgMCwgMjU1KSIgIGQ9Ik0yNSw3IEw3NSw3IDkzLDUwIDc1LDkzIDI1LDkzIDcsNTB6IiAvPgo8L3N2Zz4=");
+  background-position-x: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+} */

@@ -80,17 +80,17 @@ function App() {
           <Col xs={{ offset: 2, span: 1}}>{ c * a}</Col>
           <Col xs={{ offset: 0, span: 6}}>
           {/* <svg version="1.1" xmlns="http://www.w3.org/2000/svg"  viewbox="0 0 200 173.20508075688772" preserveAspectRatio='none'><path fill="#3cc6b2" d="M0 86.60254037844386L50 0L150 0L200 86.60254037844386L150 173.20508075688772L50 173.20508075688772Z"></path></svg> */}
-          <svg viewBox="0 0 100 100" width="100%" height="9em" preserveAspectRatio="none">
-            <path fill="#3cc6b2"  d="M25,7 L75,7 93,50 75,93 25,93 7,50z" vectorEffect="non-scaling-stroke" />
-          </svg>
+          
           </Col>
           <Col xs={{ offset: 0, span: 1}}>{ b * x}</Col>
         </Row>
         <Row>
           <Col xs={{ offset: 1, span: 1}}><input type="text" className="guess" data-index="c" value={guesses.c} onChange={handleSetGuesses} /></Col>
-          <Col xs={{ offset: 0, span: 8}}>
-          
-          { a + b + c + x + y + z } 
+          <Col xs={{ offset: 0, span: 8}}> 
+          <svg viewBox="0 0 100 100" width="100%" height="10em" preserveAspectRatio="none" style={{ position: "relative", top: "-4em", left: ".5em", zIndex: "1" }}>
+            <path fill="#3996a2"  d="M25,7 L75,7 93,50 75,93 25,93 7,50z" vectorEffect="non-scaling-stroke" />
+          </svg> 
+          <span style={{zIndex: "50", position: "relative", top: "-10em" }}>{ a + b + c + x + y + z }</span> 
           
           </Col>
           <Col xs={{ offset: 0, span: 1}}><input type="text" className="guess" data-index="x" value={guesses.x} onChange={handleSetGuesses}  /></Col>
