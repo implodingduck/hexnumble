@@ -14,3 +14,6 @@
   height: 3em;
 }
 
+.container {
+  background-image: url('https://implodingduck.github.io/hexnumble/hexagon.svg')
+}
