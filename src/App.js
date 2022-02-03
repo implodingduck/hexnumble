@@ -58,6 +58,17 @@ function App() {
     window.location.reload();
   }
 
+  const hexValue = () => {
+    let hex = '#'
+    hex += (answers[0]-1).toString(16)
+    hex += (answers[1]-1).toString(16)
+    hex += (answers[2]-1).toString(16)
+    hex += (answers[3]-1).toString(16)
+    hex += (answers[4]-1).toString(16)
+    hex += (answers[5]-1).toString(16)
+    return hex;
+  }
+
   const a = answers[0];
   const b = answers[1];
   const c = answers[2];
@@ -73,9 +84,9 @@ function App() {
           <Col xs={{ offset: 0, span: 12}}><h1>Hexnumble</h1></Col>
         </Row>
         <Row>
-          <Col xs={{ offset: 2, span: 2}}><input type="text" className="guess" data-index="a" value={guesses.a} onChange={handleSetGuesses} /></Col>
+          <Col xs={{ offset: 2, span: 2}}><input type="text" inputmode="numeric" className="guess" data-index="a" value={guesses.a} onChange={handleSetGuesses} /></Col>
           <Col xs={{ offset: 0, span: 4}}>{ a * b }</Col>
-          <Col xs={{ offset: 0, span: 2}}><input type="text" className="guess" data-index="b" value={guesses.b} onChange={handleSetGuesses}  /></Col>
+          <Col xs={{ offset: 0, span: 2}}><input type="text" inputmode="numeric" className="guess" data-index="b" value={guesses.b} onChange={handleSetGuesses}  /></Col>
         </Row>
         <Row>
           <Col xs={{ offset: 1, span: 2}}>{ c * a}</Col>
@@ -86,7 +97,7 @@ function App() {
           <Col xs={{ offset: 0, span: 2}}>{ b * x}</Col>
         </Row>
         <Row>
-          <Col xs={{ offset: 0, span: 2}}><input type="text" className="guess" data-index="c" value={guesses.c} onChange={handleSetGuesses} /></Col>
+          <Col xs={{ offset: 0, span: 2}}><input type="text" inputmode="numeric" className="guess" data-index="c" value={guesses.c} onChange={handleSetGuesses} /></Col>
           <Col xs={{ offset: 0, span: 8}}> 
           <svg viewBox="0 0 100 100" width="100%" height="10em" preserveAspectRatio="none" style={{ position: "relative", top: "-4em", left: "0", zIndex: "1" }}>
             <path fill="#f8f9fa"  d="M25,7 L75,7 93,50 75,93 25,93 7,50z" vectorEffect="non-scaling-stroke" />
@@ -94,16 +105,16 @@ function App() {
           <span style={{zIndex: "50", position: "relative", top: "-10em", color: "#333333" }}>{ a + b + c + x + y + z }</span> 
           
           </Col>
-          <Col xs={{ offset: 0, span: 2}}><input type="text" className="guess" data-index="x" value={guesses.x} onChange={handleSetGuesses}  /></Col>
+          <Col xs={{ offset: 0, span: 2}}><input type="text" inputmode="numeric" className="guess" data-index="x" value={guesses.x} onChange={handleSetGuesses}  /></Col>
         </Row>
         <Row>
           <Col xs={{ offset: 1, span: 2}}>{y * c}</Col>
           <Col xs={{ offset: 6, span: 2}}>{ x * z }</Col>
         </Row>
         <Row>
-          <Col xs={{ offset: 2, span: 2}}><input type="text" className="guess" data-index="y" value={guesses.y} onChange={handleSetGuesses}  /></Col>
+          <Col xs={{ offset: 2, span: 2}}><input type="text" inputmode="numeric" className="guess" data-index="y" value={guesses.y} onChange={handleSetGuesses}  /></Col>
           <Col xs={{ offset: 0, span: 4}}>{ y * z }</Col>
-          <Col xs={{ offset: 0, span: 2}}><input type="text" className="guess" data-index="z" value={guesses.z} onChange={handleSetGuesses}  /></Col>
+          <Col xs={{ offset: 0, span: 2}}><input type="text" inputmode="numeric" className="guess" data-index="z" value={guesses.z} onChange={handleSetGuesses}  /></Col>
         </Row>
         <Row>
           <Col xs={{ offset: 0, span: 12}}><Button variant="success" onClick={handleCheck}>Check!</Button></Col>
@@ -119,7 +130,7 @@ function App() {
         </Modal.Header>
 
         <Modal.Body>
-          { (resultVal) ? <p>You are Correct!!!</p> : <p>You are Incorrect...</p> }
+          { (resultVal) ? <p>You are Correct!!!</p>  : <p>You are Incorrect...</p> }
         </Modal.Body>
 
         <Modal.Footer>
