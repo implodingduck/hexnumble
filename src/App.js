@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="App">
-      
+      <div style={{ maxWidth: "540px", margin: "auto" }}>
       <Container>
         <Row>
           <Col xs={{ offset: 0, span: 12}}><h1>Hexnumble</h1></Col>
@@ -112,6 +112,7 @@ function App() {
           <Col xs={{ offset: 0, span: 12}}><Button onClick={handleHowToPlayShow}>How to Play?</Button></Col>
         </Row>
       </Container>
+      </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title></Modal.Title>
@@ -146,6 +147,7 @@ function App() {
         </Modal.Footer>
       </Modal>
     </div>
+
   );
 }
 
