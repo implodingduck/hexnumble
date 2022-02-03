@@ -38,7 +38,7 @@ function App() {
     console.log(e.target.getAttribute("data-index"))
     const i = e.target.getAttribute("data-index")
     const newGuesses = JSON.parse(JSON.stringify(guesses))
-    newGuesses[i] = parseInt(e.target.value) || parseInt(e.target.value, 16) || 0
+    newGuesses[i] = parseInt(e.target.value) || parseInt(e.target.value, 16) || ''
     console.log(newGuesses)
     setGuesses(newGuesses)
   }
