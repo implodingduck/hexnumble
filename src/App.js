@@ -5,18 +5,16 @@ import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 
 function App() {
 
-  const randomInteger = () => {
-    return Math.floor(Math.random() * 15) + 1;
+  const generateRandomArray = () => {
+    const array = new Uint32Array(6)
+    crypto.getRandomValues(array);
+    for (var i = 0; i < array.length; i++) { 
+      array[i] = (array[i] % 16) + 1
+    }
+    return array
   }
 
-  const [answers] = React.useState([
-    randomInteger(),
-    randomInteger(),
-    randomInteger(),
-    randomInteger(),
-    randomInteger(),
-    randomInteger() 
-  ])
+  const [answers] = React.useState(generateRandomArray())
   const [guesses, setGuesses] = React.useState({
     "a": "",
     "b": "",
@@ -27,10 +25,13 @@ function App() {
   })
 
   const [show, setShow] = React.useState(false);
+  const [howToPlay, setHowToPlay] = React.useState(false);
   const [resultVal, setResultVal] = React.useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleHowToPlayClose = () => setHowToPlay(false);
+  const handleHowToPlayShow = () => setHowToPlay(true);
 
   const handleSetGuesses = (e) => {
     console.log(e)
@@ -88,9 +89,9 @@ function App() {
           <Col xs={{ offset: 0, span: 2}}><input type="text" className="guess" data-index="c" value={guesses.c} onChange={handleSetGuesses} /></Col>
           <Col xs={{ offset: 0, span: 8}}> 
           <svg viewBox="0 0 100 100" width="100%" height="10em" preserveAspectRatio="none" style={{ position: "relative", top: "-4em", left: "0", zIndex: "1" }}>
-            <path fill="#3996a2"  d="M25,7 L75,7 93,50 75,93 25,93 7,50z" vectorEffect="non-scaling-stroke" />
+            <path fill="#f8f9fa"  d="M25,7 L75,7 93,50 75,93 25,93 7,50z" vectorEffect="non-scaling-stroke" />
           </svg> 
-          <span style={{zIndex: "50", position: "relative", top: "-10em" }}>{ a + b + c + x + y + z }</span> 
+          <span style={{zIndex: "50", position: "relative", top: "-10em", color: "#333333" }}>{ a + b + c + x + y + z }</span> 
           
           </Col>
           <Col xs={{ offset: 0, span: 2}}><input type="text" className="guess" data-index="x" value={guesses.x} onChange={handleSetGuesses}  /></Col>
@@ -105,7 +106,10 @@ function App() {
           <Col xs={{ offset: 0, span: 2}}><input type="text" className="guess" data-index="z" value={guesses.z} onChange={handleSetGuesses}  /></Col>
         </Row>
         <Row>
-          <Col xs={{ offset: 0, span: 12}}><Button onClick={handleCheck}>Check!</Button></Col>
+          <Col xs={{ offset: 0, span: 12}}><Button variant="success" onClick={handleCheck}>Check!</Button></Col>
+        </Row>
+        <Row>
+          <Col xs={{ offset: 0, span: 12}}><Button onClick={handleHowToPlayShow}>How to Play?</Button></Col>
         </Row>
       </Container>
       <Modal show={show} onHide={handleClose}>
@@ -120,6 +124,25 @@ function App() {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
           { (resultVal) ? <Button variant="primary" onClick={handlePlayAgain}>Play Again!</Button> : "" }
+        </Modal.Footer>
+      </Modal>
+
+      <Modal show={howToPlay} onHide={handleHowToPlayClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>How to Play</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <ul>
+            <li><b>Goal:</b> Guess the 6 correct corner values, which can be a value of 1-16</li>
+            <li>The sides of the hexagon show the product of the two connecting corners</li>
+            <li>The center shows the sum of all of the corners</li>
+            <li>Good luck and have fun!</li>
+          </ul>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleHowToPlayClose}>Close</Button>
         </Modal.Footer>
       </Modal>
     </div>
