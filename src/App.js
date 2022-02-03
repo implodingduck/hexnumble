@@ -67,7 +67,8 @@ function App() {
      hex += (answers[4]-1).toString(16)
      hex += (answers[5]-1).toString(16)
      return hex;
-  */ }
+   } 
+  */
 
   const a = answers[0];
   const b = answers[1];
