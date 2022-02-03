@@ -15,5 +15,6 @@
 }
 
 .container {
-  background-image: url('https://implodingduck.github.io/hexnumble/hexagon.svg')
+  background-image: url("https://implodingduck.github.io/hexnumble/hexagon.svg");
+  background-position: center;
 }
