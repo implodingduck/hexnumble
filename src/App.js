@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
-
+import Timer from './Timer'
+import FormatTime from './FormatTime'
 function App() {
 
   const generateRandomArray = () => {
@@ -23,6 +24,8 @@ function App() {
     "y": "",
     "z": "",
   })
+  const [startTime, setStartTime] = React.useState(new Date().getTime())
+  const [endTime, setEndTime] = React.useState(0)
 
   const [show, setShow] = React.useState(false);
   const [howToPlay, setHowToPlay] = React.useState(false);
@@ -51,6 +54,9 @@ function App() {
     result = result && (guesses.y === answers[4])
     result = result && (guesses.z === answers[5])
     setResultVal(result)
+    if (result){
+      setEndTime(new Date().getTime())
+    }
     handleShow()
   }
 
@@ -121,6 +127,9 @@ function App() {
           <Col xs={{ offset: 0, span: 12}}><Button variant="success" onClick={handleCheck}>Check!</Button></Col>
         </Row>
         <Row>
+          <Col xs={{ offset: 0, span: 12}}><Timer startTime={startTime} endTime={endTime}></Timer></Col>
+        </Row>
+        <Row>
           <Col xs={{ offset: 0, span: 12}}><Button onClick={handleHowToPlayShow}>How to Play?</Button></Col>
         </Row>
       </Container>
@@ -131,7 +140,7 @@ function App() {
         </Modal.Header>
 
         <Modal.Body>
-          { (resultVal) ? <p>You are Correct!!!</p>  : <p>You are Incorrect...</p> }
+          { (resultVal) ? <div><p>You are Correct!!!</p> <FormatTime time={endTime - startTime}></FormatTime> </div>  : <p>You are Incorrect...</p> }
         </Modal.Body>
 
         <Modal.Footer>
