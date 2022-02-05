@@ -143,7 +143,7 @@ function App() {
           <Col xs={{ offset: 0, span: 12}}><Button variant="success" onClick={handleCheck}>Check!</Button></Col>
         </Row>
         <Row>
-          <Col xs={{ offset: 0, span: 12}}>{ (startTime == 0) ? '' : <Timer startTime={startTime} endTime={endTime}></Timer> }</Col>
+          <Col xs={{ offset: 0, span: 12}}>{ (startTime === 0) ? '' : <Timer startTime={startTime} endTime={endTime}></Timer> }</Col>
         </Row>
         <Row>
           <Col xs={{ offset: 0, span: 12}}><Button onClick={handleHowToPlayShow}>How to Play?</Button></Col>

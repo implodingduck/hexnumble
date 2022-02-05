@@ -11,7 +11,7 @@ const Timer = ( props ) => {
             const now = new Date().getTime()
             setTimerTime(now - startTime)
         }, 1000)
-        if (endTime != 0){
+        if (endTime !== 0){
             setTimerTime(endTime - startTime)
             clearInterval(myInterval);
         }
@@ -19,7 +19,7 @@ const Timer = ( props ) => {
             clearInterval(myInterval);
         };
         
-    });
+    }, [startTime, endTime]);
 
     return (
         <div>
