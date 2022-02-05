@@ -15,7 +15,7 @@ function App() {
     return array
   }
 
-  const [answers] = React.useState(generateRandomArray())
+  const [answers, setAnswers] = React.useState(generateRandomArray())
   const [guesses, setGuesses] = React.useState({
     "a": "",
     "b": "",
@@ -24,16 +24,21 @@ function App() {
     "y": "",
     "z": "",
   })
-  const [startTime, setStartTime] = React.useState(new Date().getTime())
+  const [startTime, setStartTime] = React.useState(0)
   const [endTime, setEndTime] = React.useState(0)
 
   const [show, setShow] = React.useState(false);
-  const [howToPlay, setHowToPlay] = React.useState(false);
+  const [howToPlay, setHowToPlay] = React.useState(true);
   const [resultVal, setResultVal] = React.useState(false)
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const handleHowToPlayClose = () => setHowToPlay(false);
+  const handleHowToPlayClose = () => {
+    setHowToPlay(false);
+    if (startTime === 0){
+      setStartTime(new Date().getTime())
+    }
+  }
   const handleHowToPlayShow = () => setHowToPlay(true);
 
   const handleSetGuesses = (e) => {
@@ -61,7 +66,18 @@ function App() {
   }
 
   const handlePlayAgain = (e) => {
-    window.location.reload();
+    setGuesses({
+      "a": "",
+      "b": "",
+      "c": "",
+      "x": "",
+      "y": "",
+      "z": "",
+    })
+    setEndTime(0)
+    setStartTime(new Date().getTime())
+    setAnswers(generateRandomArray())
+    setShow(false)
   }
 
   /* const hexValue = () => {
@@ -127,7 +143,7 @@ function App() {
           <Col xs={{ offset: 0, span: 12}}><Button variant="success" onClick={handleCheck}>Check!</Button></Col>
         </Row>
         <Row>
-          <Col xs={{ offset: 0, span: 12}}><Timer startTime={startTime} endTime={endTime}></Timer></Col>
+          <Col xs={{ offset: 0, span: 12}}>{ (startTime == 0) ? '' : <Timer startTime={startTime} endTime={endTime}></Timer> }</Col>
         </Row>
         <Row>
           <Col xs={{ offset: 0, span: 12}}><Button onClick={handleHowToPlayShow}>How to Play?</Button></Col>
@@ -151,7 +167,7 @@ function App() {
 
       <Modal show={howToPlay} onHide={handleHowToPlayClose}>
         <Modal.Header closeButton>
-          <Modal.Title>How to Play</Modal.Title>
+          <Modal.Title>{ (startTime === 0) ? "Welcome to Hexnumble!" : "How to play" }</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
@@ -164,7 +180,7 @@ function App() {
         </Modal.Body>
 
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleHowToPlayClose}>Close</Button>
+          <Button variant={ (startTime === 0) ? "success" : "secondary" } onClick={handleHowToPlayClose}>{ (startTime === 0) ? "Go!" : "Close" }</Button>
         </Modal.Footer>
       </Modal>
     </div>
