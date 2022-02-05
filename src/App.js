@@ -172,7 +172,7 @@ function App() {
 
         <Modal.Body>
           <div style={{ textAlign: "center"}}>
-            <img src="/hexnumble/samplehexnumble.png"  style={{ width: "80%"}} />
+            <img src="/hexnumble/samplehexnumble.png" alt="sample hexnumble puzzle" style={{ width: "80%"}} />
           </div>
           <ul>
             <li><b>Goal:</b> Guess the 6 correct corner values, which can be a value of 1-16</li>
