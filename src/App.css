@@ -33,3 +33,27 @@ div.modal-content {
   background-size: cover;
   background-repeat: no-repeat;
 } */
+
+
+.correct {
+  font-weight: bold;
+  color: #198754;
+}
+
+.incorrect {
+  font-weight: bold;
+  color: #9e1b1b;
+}
+
+.newrecord {
+  font-weight: bold;
+  animation-name: newrecord;
+  animation-duration: 1s;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+}
+
+@keyframes newrecord {
+  from {color:#ff00ff;}
+  to {color: #003399}
+}

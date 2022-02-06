@@ -4,6 +4,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col, Button, Modal } from 'react-bootstrap';
 import Timer from './Timer'
 import FormatTime from './FormatTime'
+import LocalStorageHelper from './LocalStorageHelper';
+import DisplayStats from './DisplayStats';
+
 function App() {
 
   const generateRandomArray = () => {
@@ -59,8 +62,10 @@ function App() {
     result = result && (guesses.y === answers[4])
     result = result && (guesses.z === answers[5])
     setResultVal(result)
-    if (result){
-      setEndTime(new Date().getTime())
+    if (result && endTime === 0){
+      const et = new Date().getTime()
+      setEndTime(et)
+      LocalStorageHelper.appendGame( hexValue(), (et - startTime) )
     }
     handleShow()
   }
@@ -80,17 +85,17 @@ function App() {
     setShow(false)
   }
 
-  /* const hexValue = () => {
-     let hex = '#'
-     hex += (answers[0]-1).toString(16)
-     hex += (answers[1]-1).toString(16)
-     hex += (answers[2]-1).toString(16)
-     hex += (answers[3]-1).toString(16)
-     hex += (answers[4]-1).toString(16)
-     hex += (answers[5]-1).toString(16)
-     return hex;
-   } 
-  */
+  const hexValue = () => {
+    let hex = '#'
+    hex += (answers[0]-1).toString(16)
+    hex += (answers[1]-1).toString(16)
+    hex += (answers[2]-1).toString(16)
+    hex += (answers[3]-1).toString(16)
+    hex += (answers[4]-1).toString(16)
+    hex += (answers[5]-1).toString(16)
+    return hex;
+  } 
+
 
   const a = answers[0];
   const b = answers[1];
@@ -152,11 +157,11 @@ function App() {
       </div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title></Modal.Title>
+          <Modal.Title>Results</Modal.Title>
         </Modal.Header>
 
         <Modal.Body>
-          { (resultVal) ? <div><p>You are Correct!!!</p> <FormatTime time={endTime - startTime}></FormatTime> </div>  : <p>You are Incorrect...</p> }
+          { (resultVal) ? <div><p>You are <span className="correct">Correct!!!</span></p> <FormatTime time={endTime - startTime}></FormatTime> <DisplayStats currentId={hexValue()}></DisplayStats> </div>  : <p>You are <span className="incorrect">Incorrect...</span></p> }
         </Modal.Body>
 
         <Modal.Footer>
